@@ -16,3 +16,10 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+      - name: Make an Api Call 
+        uses: fjogeleit/http-request-action@v1
+        with:
+          url: 'http:localhost:8084/metrics/test'
+          method: 'POST'
+          customHeaders: '{"Content-Type": "text/plain"}'
+          data: '{"key_1": "value_", "key_2": "value_2"}'
